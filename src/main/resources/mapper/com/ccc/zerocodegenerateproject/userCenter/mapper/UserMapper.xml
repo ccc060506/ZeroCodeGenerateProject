@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccc.zerocodegenerateproject.userCenter.mapper.UserMapper">
+    <update id="updateLlmConfig">
+        UPDATE user_llm_config
+        SET
+            provider = #{userLlmConfig.provider},
+            api_key = #{userLlmConfig.apiKey},
+            base_url = #{userLlmConfig.baseUrl},
+            model_name = #{userLlmConfig.modelName},
+            temperature = #{userLlmConfig.temperature},
+            max_tokens = #{userLlmConfig.maxTokens}
+        WHERE user_id = #{id}
+    </update>
+
+    <select id="selectUserLlmConfig" resultType="com.ccc.zerocodegenerateproject.userCenter.domain.entity.UserLlmConfig">
+        select *
+        from user_llm_config
+        where user_id = #{userId}
+    </select>
+
+    <insert id="insertUserLlmConfig">
+        insert into user_llm_config
+        (user_id, provider, api_key, base_url, model_name)
+        VALUES
+            (#{userId},
+             #{provider},
+             #{apiKey},
+             #{baseUrl},
+             #{modelName})
+    </insert>
+
+    <select id="getProvider">
+        select provider
+        from user_llm_config
+        where user_id = #{id}
+    </select>
+
+    <select id="selectApiKey">
+        select user_llm_config.api_key
+        from user_llm_config
+        where user_id = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccc.zerocodegenerateproject.projectManager.mapper.ProjectMapper">
+
+    <update id="updateNameById">
+        update project
+        set project_name = #{newName}
+        where id = #{id}
+    </update>
+
+    <update id="updateStats">
+        update project
+        set view_count = #{viewCountFromRedis} and like_count = #{likeCountFromRedis}
+        where id = #{projectId}
+    </update>
+
+    <select id="getByTaskCode">
+        select * from project_generate_task
+        where task_code = #{taskCode}
+    </select>
+</mapper>

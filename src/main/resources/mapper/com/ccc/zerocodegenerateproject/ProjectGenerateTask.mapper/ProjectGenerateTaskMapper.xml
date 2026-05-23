@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccc.zerocodegenerateproject.projectManager.mapper.ProjectGenerateTaskMapper">
+    <update id="updateStatus">
+        update project_generate_task
+        set status = #{running},generate_time = #{now}
+        where task_code = #{taskCode}
+    </update>
+
+    <update id="updateAiResult">
+        update project_generate_task
+        set project_id = #{aiProjectSuggestion.projectId},
+            ai_project_name = #{aiProjectSuggestion.projectName},
+            ai_description = #{aiProjectSuggestion.description},
+            ai_project_type = #{aiProjectSuggestion.projectType},
+            ai_tech_stack = #{aiProjectSuggestion.techStack}
+        where task_code = #{taskCode}
+    </update>
+</mapper>
