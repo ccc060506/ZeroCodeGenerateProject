@@ -28,3 +28,6 @@ mvn spring-boot:run
 ```
 
 服务运行在 `http://localhost:8080`
+
+<img width="2353" height="1226" alt="image" src="https://github.com/user-attachments/assets/e883ffdc-d60a-4821-a4db-ae3790bd9833" />
+这是首页信息，可以查看热门项目以及排行榜，并且优先根据点赞量进行向量化，用于 AI 生成项目时作为参考
